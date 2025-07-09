@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server"
 import connectDB from "@/lib/db"
 import User from "@/models/User"
-import { sendOTP } from "@/lib/email"
+import { sendOTP } from "@/lib/email-config"
 
 export async function POST(request: Request) {
   try {
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
     return NextResponse.json({
       message: "OTP sent successfully",
       email,
-    })
+    },{status: 200})
   } catch (error: any) {
     console.error("Send OTP error:", error)
     return NextResponse.json({ error: error.message || "Failed to send OTP" }, { status: 500 })

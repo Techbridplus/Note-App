@@ -1,30 +1,24 @@
-import { NextResponse, NextRequest } from "next/server"
-import { getToken } from "next-auth/jwt"
+import { NextResponse } from "next/server";
+import type { NextRequest } from "next/server";
 
-export default async function middleware(req: NextRequest) {
-  const { nextUrl } = req
-  
-  // Get token without using the full auth middleware
-  const token = await getToken({ req, secret: process.env.NEXTAUTH_SECRET })
-  const isLoggedIn = !!token
-  // Redirect authenticated users away from auth pages
-  if (nextUrl.pathname === "/login" || nextUrl.pathname === "/signup") {
-    console.log("path /login or /signup")
-    if (isLoggedIn) {
-      return NextResponse.redirect(new URL("/", nextUrl))
-    }
-    return NextResponse.next()
+const publicRoutes = [ "/signin", "/signup"];
+
+export function middleware(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+  const token =
+    request.cookies.get("next-auth.session-token")?.value ||
+    request.cookies.get("__Secure-next-auth.session-token")?.value ||
+    null;
+
+  if (!token && !publicRoutes.includes(path)) {
+    return NextResponse.redirect(new URL("/signin", request.url));
   }
 
-  // Protect all other routes except auth pages
-  if (!isLoggedIn) {
-    console.log("redirecting to login")
-    return NextResponse.redirect(new URL("/login", nextUrl))
-  }
-
-  return NextResponse.next()
+  return NextResponse.next();
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
-}
+  matcher: [
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
+};
