@@ -4299,6 +4299,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     content: string | null
+    isPinned: boolean | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4308,6 +4309,7 @@ export namespace Prisma {
     id: string | null
     title: string | null
     content: string | null
+    isPinned: boolean | null
     userId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -4317,6 +4319,7 @@ export namespace Prisma {
     id: number
     title: number
     content: number
+    isPinned: number
     userId: number
     createdAt: number
     updatedAt: number
@@ -4328,6 +4331,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    isPinned?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -4337,6 +4341,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    isPinned?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -4346,6 +4351,7 @@ export namespace Prisma {
     id?: true
     title?: true
     content?: true
+    isPinned?: true
     userId?: true
     createdAt?: true
     updatedAt?: true
@@ -4428,6 +4434,7 @@ export namespace Prisma {
     id: string
     title: string
     content: string
+    isPinned: boolean
     userId: string
     createdAt: Date
     updatedAt: Date
@@ -4454,6 +4461,7 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    isPinned?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -4466,12 +4474,13 @@ export namespace Prisma {
     id?: boolean
     title?: boolean
     content?: boolean
+    isPinned?: boolean
     userId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type NoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["note"]>
+  export type NoteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "content" | "isPinned" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["note"]>
   export type NoteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -4485,6 +4494,7 @@ export namespace Prisma {
       id: string
       title: string
       content: string
+      isPinned: boolean
       userId: string
       createdAt: Date
       updatedAt: Date
@@ -4884,6 +4894,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Note", 'String'>
     readonly title: FieldRef<"Note", 'String'>
     readonly content: FieldRef<"Note", 'String'>
+    readonly isPinned: FieldRef<"Note", 'Boolean'>
     readonly userId: FieldRef<"Note", 'String'>
     readonly createdAt: FieldRef<"Note", 'DateTime'>
     readonly updatedAt: FieldRef<"Note", 'DateTime'>
@@ -5324,6 +5335,7 @@ export namespace Prisma {
     id: 'id',
     title: 'title',
     content: 'content',
+    isPinned: 'isPinned',
     userId: 'userId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -5392,6 +5404,13 @@ export namespace Prisma {
    * Reference to a field of type 'Int[]'
    */
   export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Boolean'
+   */
+  export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
     
 
 
@@ -5633,6 +5652,7 @@ export namespace Prisma {
     id?: StringFilter<"Note"> | string
     title?: StringFilter<"Note"> | string
     content?: StringFilter<"Note"> | string
+    isPinned?: BoolFilter<"Note"> | boolean
     userId?: StringFilter<"Note"> | string
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
@@ -5643,6 +5663,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    isPinned?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5656,6 +5677,7 @@ export namespace Prisma {
     NOT?: NoteWhereInput | NoteWhereInput[]
     title?: StringFilter<"Note"> | string
     content?: StringFilter<"Note"> | string
+    isPinned?: BoolFilter<"Note"> | boolean
     userId?: StringFilter<"Note"> | string
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
@@ -5666,6 +5688,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    isPinned?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -5681,6 +5704,7 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Note"> | string
     title?: StringWithAggregatesFilter<"Note"> | string
     content?: StringWithAggregatesFilter<"Note"> | string
+    isPinned?: BoolWithAggregatesFilter<"Note"> | boolean
     userId?: StringWithAggregatesFilter<"Note"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Note"> | Date | string
@@ -5912,6 +5936,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
     user: UserCreateNestedOneWithoutNotesInput
@@ -5921,6 +5946,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5929,6 +5955,7 @@ export namespace Prisma {
   export type NoteUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutNotesNestedInput
@@ -5937,6 +5964,7 @@ export namespace Prisma {
   export type NoteUncheckedUpdateInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -5946,6 +5974,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     userId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -5954,6 +5983,7 @@ export namespace Prisma {
   export type NoteUpdateManyMutationInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -5961,6 +5991,7 @@ export namespace Prisma {
   export type NoteUncheckedUpdateManyInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     userId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -6259,10 +6290,16 @@ export namespace Prisma {
     expires?: SortOrder
   }
 
+  export type BoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
   export type NoteCountOrderByAggregateInput = {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    isPinned?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6272,6 +6309,7 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    isPinned?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -6281,9 +6319,18 @@ export namespace Prisma {
     id?: SortOrder
     title?: SortOrder
     content?: SortOrder
+    isPinned?: SortOrder
     userId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
+  }
+
+  export type BoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
   }
 
   export type NoteCreateNestedManyWithoutUserInput = {
@@ -6473,6 +6520,10 @@ export namespace Prisma {
     connect?: UserWhereUniqueInput
   }
 
+  export type BoolFieldUpdateOperationsInput = {
+    set?: boolean
+  }
+
   export type UserUpdateOneRequiredWithoutNotesNestedInput = {
     create?: XOR<UserCreateWithoutNotesInput, UserUncheckedCreateWithoutNotesInput>
     connectOrCreate?: UserCreateOrConnectWithoutNotesInput
@@ -6649,10 +6700,24 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type NestedBoolFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: boolean | BooleanFieldRefInput<$PrismaModel>
+    not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedBoolFilter<$PrismaModel>
+    _max?: NestedBoolFilter<$PrismaModel>
+  }
+
   export type NoteCreateWithoutUserInput = {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6661,6 +6726,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -6755,6 +6821,7 @@ export namespace Prisma {
     id?: StringFilter<"Note"> | string
     title?: StringFilter<"Note"> | string
     content?: StringFilter<"Note"> | string
+    isPinned?: BoolFilter<"Note"> | boolean
     userId?: StringFilter<"Note"> | string
     createdAt?: DateTimeFilter<"Note"> | Date | string
     updatedAt?: DateTimeFilter<"Note"> | Date | string
@@ -7010,6 +7077,7 @@ export namespace Prisma {
     id?: string
     title: string
     content: string
+    isPinned?: boolean
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -7037,6 +7105,7 @@ export namespace Prisma {
   export type NoteUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7044,6 +7113,7 @@ export namespace Prisma {
   export type NoteUncheckedUpdateWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -7051,6 +7121,7 @@ export namespace Prisma {
   export type NoteUncheckedUpdateManyWithoutUserInput = {
     title?: StringFieldUpdateOperationsInput | string
     content?: StringFieldUpdateOperationsInput | string
+    isPinned?: BoolFieldUpdateOperationsInput | boolean
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

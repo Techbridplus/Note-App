@@ -57,6 +57,7 @@ model Note {
   id        String   @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   String
+  isPinned  Boolean @default(false)
   userId    String   @db.ObjectId
   user      User     @relation(fields: [userId], references: [id])
   createdAt DateTime @default(now())

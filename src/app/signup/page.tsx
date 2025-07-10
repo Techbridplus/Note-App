@@ -256,7 +256,7 @@ export default function SignUpPage() {
             variant="outline" 
             type="button" disabled={isLoading} 
             onClick={() => handleOAuthSignIn("google")}
-            className="w-full flex items-center justify-center space-x-2 bg-white hover:bg-gray-50 text-gray-900 border-gray-300">
+            className="w-full flex items-center justify-center space-x-2 dark:text-white bg-white hover:bg-gray-50 text-gray-900 border-gray-300">
               <svg className="w-5 h-5" viewBox="0 0 24 24">
                 <path
                   fill="#4285F4"

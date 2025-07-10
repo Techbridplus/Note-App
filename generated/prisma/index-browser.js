@@ -149,6 +149,7 @@ exports.Prisma.NoteScalarFieldEnum = {
   id: 'id',
   title: 'title',
   content: 'content',
+  isPinned: 'isPinned',
   userId: 'userId',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
