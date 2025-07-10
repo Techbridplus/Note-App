@@ -138,7 +138,7 @@ export default function SignUpPage() {
 
   const handleOAuthSignIn = (provider: "google" ) => {
     setIsLoading(true)
-    signIn(provider, { callbackUrl: "/" })
+    signIn(provider, { callbackUrl: "https://note-app-beryl-beta.vercel.app" })
   }
 
   return (

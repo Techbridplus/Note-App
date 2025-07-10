@@ -70,7 +70,7 @@ export default function SignInPage() {
     setIsLoading(true)
     try {
       await signIn(provider, {
-        callbackUrl: "/",
+        callbackUrl: "https://note-app-beryl-beta.vercel.app",
       })
     } catch (error) {
       setError(`An unexpected error occurred: ${error}`)
