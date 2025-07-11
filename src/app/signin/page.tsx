@@ -23,7 +23,7 @@ export default function SignInPage() {
   const handleEmailVerification = async () => {
     setIsLoading(true)
     setError(null)
-
+    setEmail(email.toLowerCase())
     try {
       const response = await axios.post('/api/auth/signin', { email })
       if (response.data.success) {
@@ -40,6 +40,8 @@ export default function SignInPage() {
       } else {
         setError('Failed to send verification email')
       }
+    }finally{
+
     }
   }
   const handleSubmit = async (e: React.FormEvent) => {

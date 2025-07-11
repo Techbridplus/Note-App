@@ -5,10 +5,11 @@ import prisma from "@/lib/prisma"
 export async function POST(req: NextRequest) {
   try {
     const { email } = await req.json()
-
+    // Convert email to lowercase before querying
+    const normalizedEmail = email.toLowerCase()
 
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email: normalizedEmail }
     })
 
     if (!existingUser) {

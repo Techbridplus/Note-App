@@ -40,7 +40,7 @@ export function NoteCard({
                     >{note.title.length > 40 ? note.title.slice(0, 40) + "..." : (note.title.length > 0 ?note.title:"Untitled")}</h3>
 
                     {showActions && (
-                        <div className="flex items-center gap-1 h-5 ">
+                        <div className=" items-center gap-1 h-5 hidden  md:flex">
                             <Button
                                 variant="ghost"
                                 size="icon"

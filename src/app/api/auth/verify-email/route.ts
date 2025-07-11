@@ -6,15 +6,16 @@ export async function POST(req: NextRequest) {
   try {
     const { email, otp } = await req.json()
 
+    const normalizedEmail = email.toLowerCase()
     // If OTP is provided, verify it
     if (otp) {
-      const result = await verifyEmail(email, otp)
+      const result = await verifyEmail(normalizedEmail, otp)
       return NextResponse.json(result)
     }
 
     // Check if existing user or not
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email: normalizedEmail }
     })
 
 
@@ -26,7 +27,7 @@ export async function POST(req: NextRequest) {
     }
 
 
-    const result = await sendVerificationEmail(email)
+    const result = await sendVerificationEmail(normalizedEmail)
     if (!result.success) {
       return NextResponse.json(result, { status: 500 })
     }

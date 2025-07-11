@@ -36,17 +36,18 @@ export const authOptions: NextAuthOptions = {
         if (!credentials?.email || !credentials?.otp) {
           throw new Error("Invalid credentials")
         }
+        const normalizedEmail = credentials?.email.toLowerCase()
 
         const user = await prisma.user.findUnique({
           where: {
-            email: credentials.email,
+            email: normalizedEmail
           }
         })
 
         if (!user) {
           throw new Error("User not found")
         }
-        const isOTPValid = await verifyEmail(credentials.email,credentials.otp)
+        const isOTPValid = await verifyEmail(normalizedEmail,credentials.otp)
 
         if(!isOTPValid.success){
           throw new Error("Incorrect OTP")
@@ -68,9 +69,9 @@ export const authOptions: NextAuthOptions = {
   callbacks: {
     async signIn({ user, account }) {
       if (account?.provider === "google") {
-        
+        const normalizedEmail = user.email?.toLowerCase()       
         const existingUser = await prisma.user.findUnique({
-          where: { email: user.email! },
+          where: { email: normalizedEmail! },
         })
 
         if (existingUser) {
