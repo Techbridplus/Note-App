@@ -55,6 +55,7 @@ A full-stack, feature-rich note-taking application built with Next.js 15, TypeSc
 
 ## 📁 Project Structure
 
+```
 project-highway-delite/
 ├── src/
 │ ├── app/ # Next.js App Router
@@ -83,6 +84,7 @@ project-highway-delite/
 │ └── schema.prisma # Database schema
 ├── public/ # Static assets
 └── generated/ # Generated Prisma client
+```
 
 ## ��️ Database Schema
 
