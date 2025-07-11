@@ -2,6 +2,17 @@
 
 A full-stack, feature-rich note-taking application built with Next.js 15, TypeScript, and modern web technologies. This application provides a seamless experience for creating, organizing, and managing personal notes with rich text editing capabilities.
 
+## 🚀 Live Demo
+
+**Try the application live:** [https://note-app-beryl-beta.vercel.app/](https://note-app-beryl-beta.vercel.app/)
+
+Experience the full functionality including:
+- Rich text editing with formatting options
+- Real-time search and filtering
+- Note pinning and organization
+- Dark/light theme toggle
+- Secure authentication with Google OAuth and email OTP
+
 ##  Features
 
 ### Core Functionality
